@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.schatzdesigns.databindingvalidator.R
 import com.schatzdesigns.databindingvalidator.databinding.ActivityMainBinding
-import com.schatzdesigns.validator.Validator
+import com.schatzlabs.validator.Validator
 
 class MainActivity : AppCompatActivity() {
 
