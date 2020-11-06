@@ -32,7 +32,7 @@ import com.schatzlabs.validator.helpers.EditTextHelper
  *
  * @see Rule
  */
-class NumberLessThanRule(
+class MaxNumberRule(
     view: TextView,
     value: Int,
     errorMessage: String
