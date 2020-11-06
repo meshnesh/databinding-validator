@@ -34,7 +34,7 @@ import com.schatzlabs.validator.rules.MaxNumberRule
  * @see BindingAdapter
  */
 @BindingAdapter(
-    value = ["validateNumberMin", "validateNumberMessage", "validateNumberAutoDismiss"],
+    value = ["validateMinNumber", "validateNumberMessage", "validateNumberAutoDismiss"],
     requireAll = false
 )
 fun bindingMinNumber(view: TextView, minNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
@@ -61,7 +61,7 @@ fun bindingMinNumber(view: TextView, minNumber: Int, errorMessage: String?, auto
  * @see BindingAdapter
  */
 @BindingAdapter(
-    value = ["validateNumberMax", "validateNumberMessage", "validateNumberAutoDismiss"],
+    value = ["validateMaxNumber", "validateNumberMessage", "validateNumberAutoDismiss"],
     requireAll = false
 )
 fun bindingMaxNumber(view: TextView, maxNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
