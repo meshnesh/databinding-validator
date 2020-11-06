@@ -22,8 +22,8 @@ import com.schatzlabs.validator.R
 import com.schatzlabs.validator.helpers.EditTextHelper
 import com.schatzlabs.validator.helpers.ErrorMessageHelper
 import com.schatzlabs.validator.helpers.ViewTagHelper
-import com.schatzlabs.validator.rules.NumberGreaterThanRule
-import com.schatzlabs.validator.rules.NumberLessThanRule
+import com.schatzlabs.validator.rules.MinNumberRule
+import com.schatzlabs.validator.rules.MaxNumberRule
 
 /**
  * @author Zakayo Thuku
@@ -34,10 +34,10 @@ import com.schatzlabs.validator.rules.NumberLessThanRule
  * @see BindingAdapter
  */
 @BindingAdapter(
-    value = ["validateGreaterThanNumber", "validateGreaterThanNumberMessage", "validateNumberAutoDismiss"],
+    value = ["validateNumberMin", "validateNumberMessage", "validateNumberAutoDismiss"],
     requireAll = false
 )
-fun bindingGreaterThanNumber(view: TextView, greaterThanNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
+fun bindingMinNumber(view: TextView, minNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
     if (autoDismiss) {
         EditTextHelper.disableErrorOnChanged(view)
     }
@@ -46,13 +46,13 @@ fun bindingGreaterThanNumber(view: TextView, greaterThanNumber: Int, errorMessag
         view = view,
         errorMessage = errorMessage,
         defaultMessage = R.string.error_message_number_less_than,
-        value = greaterThanNumber
+        value = minNumber
     )
 
     ViewTagHelper.appendValue(
         tagId = R.id.validator_rule,
         view = view,
-        value = NumberGreaterThanRule(view, greaterThanNumber, handledErrorMessage)
+        value = MinNumberRule(view, minNumber, handledErrorMessage)
     )
 }
 
@@ -61,10 +61,10 @@ fun bindingGreaterThanNumber(view: TextView, greaterThanNumber: Int, errorMessag
  * @see BindingAdapter
  */
 @BindingAdapter(
-    value = ["validateLessThanNumber", "validateLessThanNumberMessage", "validateNumberAutoDismiss"],
+    value = ["validateNumberMax", "validateNumberMessage", "validateNumberAutoDismiss"],
     requireAll = false
 )
-fun bindingLessThanNumber(view: TextView, lessThanNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
+fun bindingMaxNumber(view: TextView, maxNumber: Int, errorMessage: String?, autoDismiss: Boolean) {
     if (autoDismiss) {
         EditTextHelper.disableErrorOnChanged(view)
     }
@@ -73,12 +73,12 @@ fun bindingLessThanNumber(view: TextView, lessThanNumber: Int, errorMessage: Str
         view = view,
         errorMessage = errorMessage,
         defaultMessage = R.string.error_message_number_greater_than,
-        value = lessThanNumber
+        value = maxNumber
     )
 
     ViewTagHelper.appendValue(
         tagId = R.id.validator_rule,
         view = view,
-        value = NumberLessThanRule(view, lessThanNumber, handledErrorMessage)
+        value = MaxNumberRule(view, maxNumber, handledErrorMessage)
     )
 }

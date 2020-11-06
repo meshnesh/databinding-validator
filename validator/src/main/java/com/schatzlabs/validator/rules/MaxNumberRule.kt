@@ -32,14 +32,18 @@ import com.schatzlabs.validator.helpers.EditTextHelper
  *
  * @see Rule
  */
-class NumberLessThanRule(
+class MaxNumberRule(
     view: TextView,
     value: Int,
     errorMessage: String
 ) : Rule<TextView, Int>(view, value, errorMessage) {
 
     override fun isValid(view: TextView): Boolean {
-        return view.text.toString().toInt() <= value
+        return if (view.text.isEmpty()) {
+            false
+        } else {
+            return view.text.toString().toInt() <= value
+        }
     }
 
     override fun onValidationSuccess(view: TextView) {
